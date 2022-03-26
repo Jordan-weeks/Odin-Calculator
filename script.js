@@ -2,39 +2,48 @@
 const plus = (x,y) => (Number(x)+ Number(y)); 
 const subtract = (x,y ) => (x-y);
 const multiply = (x,y) => (x*y);
-const divide = (x,y) => (x/y);
+const divide = (x,y) => {
+    if(y==0) return "You know better...";
+    return (x/y)};
 let displayValue = ""
-let storedValue = ""    
+let storedValue =""   
 let storedOperator = "" 
+let output = ""
 let display = document.querySelector(".display");  
 const updateDisplay = (number) => {
+    if(displayValue.length>=15) return
     displayValue = displayValue.concat(number)
-    console.log(displayValue)
-    display.innerHTML = displayValue 
+    display.innerHTML = displayValue
+    
 }
 const callOperator = (operator) =>{
-    if(storedOperator != "")(
+    
+    if(storedOperator != ""){
+        //prevents opperating without a complete formula
+        if(displayValue == "") return
         operate(storedValue, storedOperator,displayValue)
-    )
+    }
     storedValue = displayValue;
     displayValue= ""
     storedOperator = operator
-    console.log(storedOperator)
-}
+    }
 const operate = (numberOne, operator, numberTwo) => {
-    if (operator == "plus")
+    if (operator == "plus"){
     displayValue = (plus(numberOne, numberTwo));
-    display.innerHTML = displayValue; 
-    if (operator == "subtract") 
+   }    
+    if (operator == "subtract"){ 
     displayValue = (subtract(numberOne, numberTwo));
-    display.innerHTML = displayValue;
-    if (operator == "multiply") 
+    }
+    if (operator == "multiply"){ 
     displayValue = (multiply(numberOne, numberTwo));
-    display.innerHTML = displayValue;
-    if (operator == "divide") 
+    }
+    if (operator == "divide") {
     displayValue = (divide(numberOne, numberTwo));
-    display.innerHTML = displayValue;
     
+    }
+    display.innerHTML = displayValue
+    storedValue="";
+    storedOperator="";
 }
 //number event listeners
 let numberButtons = document.querySelectorAll(".number")
@@ -46,7 +55,9 @@ opperatorButtons.forEach(item =>item.addEventListener("click", (e) => callOperat
  ))
 
 //equals event listener
-let equals = document.querySelector("#equals").addEventListener("click", () => operate(storedValue,storedOperator,displayValue))
+let equals = document.querySelector("#equals").addEventListener("click", () =>{
+     if(displayValue == "") return; 
+     else operate(storedValue,storedOperator,displayValue)})
 
 // Clear button
 let clear = document.querySelector("#clear").addEventListener("click", () =>( 
@@ -62,12 +73,17 @@ let decimal = document.querySelector("#decimal").addEventListener("click", () =>
 
 //Backspace
 let backspace = document.querySelector("#backspace").addEventListener("click", () =>{
+    //stops console error when trying to backspace
+    if (typeof(displayValue)== "number") return
     displayValue = displayValue.slice(0,-1)
     display.innerHTML = displayValue;
 
 })
-
 //Negative
-let negative = document.querySelector("#negative").addEventListener("click",() => {
-displayValue = multiply(displayValue, -1),
-display.innerHTML = displayValue })
+let negative = document.querySelector("#negative").addEventListener("click",() =>{
+    // prevents turning the output of a formula negative.
+if (typeof(displayValue)== "number") return
+if (displayValue == "") return
+else(
+displayValue = multiply(displayValue, -1).toString(),
+display.innerHTML = displayValue )})

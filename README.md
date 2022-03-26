@@ -1,4 +1,9 @@
 # Odin-Calculator
 
 Calculator project for the Odin project.
-This was a fun project. I get an error in the console when trying a couple things but they don't change the overall function of the calculator.
+A few issues that I had to work through:
+allowing the output of a formula to be swapped to a negative.
+allowing negative to run prior to having anythin in the input.
+opperating without a two numbers.
+overflowing the original input with numbers
+
