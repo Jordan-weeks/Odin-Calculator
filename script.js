@@ -13,6 +13,9 @@ const updateDisplay = (number) => {
     display.innerHTML = displayValue 
 }
 const callOperator = (operator) =>{
+    if(storedOperator != "")(
+        operate(storedValue, storedOperator,displayValue)
+    )
     storedValue = displayValue;
     displayValue= ""
     storedOperator = operator
@@ -51,3 +54,20 @@ displayValue = "",
 storedValue = "",    
 storedOperator = "",
 updateDisplay(storedValue)))
+
+//Decimal button
+let decimal = document.querySelector("#decimal").addEventListener("click", () => {
+    if (displayValue.includes(".")) console.log("has decimal")
+    else(updateDisplay("."))})
+
+//Backspace
+let backspace = document.querySelector("#backspace").addEventListener("click", () =>{
+    displayValue = displayValue.slice(0,-1)
+    display.innerHTML = displayValue;
+
+})
+
+//Negative
+let negative = document.querySelector("#negative").addEventListener("click",() => {
+displayValue = multiply(displayValue, -1),
+display.innerHTML = displayValue })

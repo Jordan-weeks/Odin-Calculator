@@ -5,20 +5,22 @@ body{
     justify-content: center;
     gap: 2em;
     flex: 1 1 100%;
+    color: #605F5E;
 }
 .header{
-    font-size: 2em;
+    font-size: 4em;
 }
 #calculator{
     display: flex;
     flex-direction: column;
     height: 100%;
     width: 75%;
-    max-width: 10000px;
+    max-width: 800px;
     align-items: center;
     border: 1px solid black;
     padding: 2em;
    flex-grow: 4em;
+   background-color: #d5d9d8;
 }
 .display{
     width: 100%;
@@ -28,6 +30,8 @@ body{
     font-size: 5rem;
     text-align: end;
     padding-right: 1rem;
+    background-color: #fbf9f6
+
 }
 .buttons{
     margin: 3.5rem;
@@ -36,6 +40,8 @@ body{
     display: flex; 
     gap: .75rem;
     flex-grow: 1;
+    
+    
    
 }
 .column{
@@ -47,14 +53,23 @@ body{
 .button{
    min-width: 100px;
    min-height: 100px;
-    
+    background-color: #61777e;
+    color: #fbf9f6;
+    font-size: 3em;
+    border-radius: 20px;
 }
 
-.opperatorButton{
+.opperator, #negative, #backspace{
     min-width: 100px;
     min-height: 100px;
-    
+    background-color: #3b5760;
 }
 #equals{
     flex-grow: 1;
+}
+#clear{
+    background-color: #FB3640;
+}
+#equals{
+    background-color: #143642;
 }
