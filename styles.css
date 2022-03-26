@@ -24,7 +24,7 @@ body{
     width: 100%;
     margin: 3rem;
     border: 1px solid black;
-    
+    min-height: 91px;
     font-size: 5rem;
     text-align: end;
     padding-right: 1rem;
